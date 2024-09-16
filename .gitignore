@@ -1,0 +1,4 @@
+.env
+venv
+chroma
+faiss_index
