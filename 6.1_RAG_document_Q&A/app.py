@@ -51,6 +51,7 @@ if uploaded_files:
     # Split and create embeddings for the documents
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=5000, chunk_overlap=500)
     splits = text_splitter.split_documents(documents)
+    # retriever
     vectorstore = Chroma.from_documents(documents=splits, embedding=embeddings)
     retriever = vectorstore.as_retriever()
 
@@ -72,12 +73,13 @@ if uploaded_files:
         ]
     )
 
-    # Create the history aware retriever
+    # Create the history aware retriever (Ranker)
+    # The create_history_aware_retriever function likely includes ranking logic to prioritize relevant documents.
     history_aware_retriver = create_history_aware_retriever(
         llm,retriever,contextualize_q_prompt
     )
 
-    # Answer question
+    # Answer question (Generator)
     system_prompt = (
         "You are an assistant for question-answering tasks. "
         "Use the following pieces of retrieved context to answer "
@@ -104,6 +106,7 @@ if uploaded_files:
             st.session_state.store[session_id]=ChatMessageHistory()
         return st.session_state.store[session_id]
     
+    # History Awareness
     conversational_rag_chain = RunnableWithMessageHistory(
         rag_chain,
         get_session_history,
