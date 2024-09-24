@@ -4,7 +4,7 @@
 <img src="./media/langchain1.png">
 <img src="./media/langchain1.1.png">
 
-[Complete conseptual guide](https://js.langchain.com/v0.2/docs/concepts/#langsmith)
+[Documentation](https://js.langchain.com/v0.2/docs/concepts/#langsmith)
 
 ## Langgraph
 
@@ -72,3 +72,17 @@ Types of agents:
 
 Think of an agent as a virtual assistant that automates tasks and enhances language model capabilities.
 
+### Text summarization
+- If content fits in llm context window we can pass it directly to llm.
+- If content doesn't fits in llm context window we can apply these two common approaches for this are:
+
+    - `Stuff`: Simply "stuff" all your documents into a single prompt. This is the simplest approach .
+
+    - `Map-reduce` (Larger file): Summarize each document on its own in a "map" step and then "reduce" the summaries into a final summary.
+        * Single prompt template
+        * Multi prompt template
+    - `Refine`
+    
+<img src="./media/summarization.png">
+
+[Documentation](https://python.langchain.com/docs/tutorials/summarization/#concepts)
