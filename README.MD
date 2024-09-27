@@ -13,7 +13,7 @@
 | **How they Work** | Pre-trained on large data, fine-tuned for specific tasks | Often backed by LLMs, tuned for conversational responses |
 | **Input and Output** | Perform various tasks | Take chat messages as input, return AI message as output |
 
-##### [Chat Model Messages](https://python.langchain.com/v0.1/docs/modules/model_io/chat/)
+#### [Chat Model Messages](https://python.langchain.com/v0.1/docs/modules/model_io/chat/)
 - Message Structure
   - Role: Describes who is saying the message (e.g., human, AI, system)
   - Content: Describes the message content (string, list of dictionaries)
@@ -61,7 +61,7 @@ tool_msg = ToolMessage(content="Search results:", tool_call_id="search_123")
 print(tool_msg)
 ```
 
-##### [Prompt Template in LangChain](https://python.langchain.com/v0.1/docs/modules/model_io/prompts/quick_start/)
+#### [Prompt Template in LangChain](https://python.langchain.com/v0.1/docs/modules/model_io/prompts/quick_start/)
 
 Prompt templates are pre-designed formats that help you ask questions or provide tasks to language models. They ensure you get accurate and relevant responses.
 
@@ -186,7 +186,7 @@ new_template = AIMessagePromptTemplate.from_template(
 )
 ```
 
-##### [Few-shot prompt](https://python.langchain.com/v0.1/docs/modules/model_io/prompts/few_shot_examples/)
+#### [Few-shot prompt](https://python.langchain.com/v0.1/docs/modules/model_io/prompts/few_shot_examples/)
 A few-shot prompt is a type of prompt that provides a limited number of examples (typically 2-5) of the desired output, along with a clear instruction or task. This approach enables language models to understand the context and generate high-quality responses.
 ```
 **Task:** Write a short story about a character who discovers a hidden world.
@@ -215,7 +215,6 @@ prompt = FewShotPromptTemplate(
 )
 
 prompt.format(input="Write a humorous poem about a Toast.")
-
 ```
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ldBsvhjEREc?si=0U_BXnkMPg1cNXBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

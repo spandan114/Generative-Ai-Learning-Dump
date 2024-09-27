@@ -34,3 +34,5 @@ huggingface_hub
 datasets
 tiktoken
 cassio
+boto3
+awscli
