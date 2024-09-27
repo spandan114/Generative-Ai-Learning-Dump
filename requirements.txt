@@ -36,3 +36,5 @@ tiktoken
 cassio
 boto3
 awscli
+crewai
+crewai-tools
