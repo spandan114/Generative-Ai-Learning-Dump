@@ -216,26 +216,120 @@ prompt = FewShotPromptTemplate(
 
 prompt.format(input="Write a humorous poem about a Toast.")
 ```
+#### [Output Parser](https://python.langchain.com/docs/concepts/#output-parsers)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ldBsvhjEREc?si=0U_BXnkMPg1cNXBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+`Output parser` is responsible for taking the output of a model and transforming it to a more suitable format for downstream tasks.
+
+[Output parser Tools documentation](https://python.langchain.com/v0.1/docs/modules/model_io/output_parsers/types/json/)
+
+```python
+from langchain_core.output_parsers import JsonOutputParser
+from langchain_core.prompts import PromptTemplate
+from langchain_openai import ChatOpenAI
+
+output_parser = CommaSeparatedListOutputParser()
+
+format_instructions = output_parser.get_format_instructions()
+prompt = PromptTemplate(
+    template="Generate a table with 5 rows and columns: {column1}, {column2}, {column3}. List {number} {subject}.\n{format_instructions}",
+    input_variables=["subject", "number", "column1", "column2", "column3"],
+    partial_variables={"format_instructions": format_instructions},
+)
+
+model = ChatOpenAI(temperature=0)
+
+chain = prompt | model | output_parser
+
+response = chain.invoke({
+    "subject":"ice cream flavors",
+    "number":5,
+    "column1":"Flavor",
+    "column2":"Type",
+    "column3":"Calories"
+})
+print(response)
+```
+
+#### [Data ingestion (Retrieval)](https://python.langchain.com/v0.1/docs/modules/data_connection/)
+<img src="./media/retrieval.jpg">
+
+- Loader
+- Text splitter
+- Embedding
+- Vector store
+- Retrievers
+- Indexing
+
+##### Contextual compression
+While retriving data from a  vector store we get the document with with a lot of irrelevant text contextual compression helps to fix this.
+
+The idea is simple: instead of immediately returning retrieved documents as-is, you can compress them using the context of the given query, so that only the relevant information is returned. “Compressing” here refers to both compressing the contents of an individual document and filtering out documents wholesale.
+
+```python
+from langchain_openai import OpenAI
+from langchain_community.document_loaders import TextLoader
+from langchain_community.vectorstores import Chroma
+from langchain_openai import OpenAIEmbeddings
+from langchain_text_splitters import CharacterTextSplitter
+from langchain.retrievers import ContextualCompressionRetriever
+from langchain.retrievers.document_compressors import LLMChainExtractor
+
+def pretty_print_docs(docs):
+    print(
+        f"\n{'-' * 100}\n".join(
+            [f"Document {i+1}:\n\n" + d.page_content for i, d in enumerate(docs)]
+        )
+    )
+
+documents = TextLoader("./speech.txt").load()
+text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
+
+docs = text_splitter.split_documents(documents)
+embeddings = OpenAIEmbeddings()
+vectordb = Chroma.from_documents(docs,embeddings)
+retriever = vectordb.as_retriever(search_kwargs={"k": 1})
+
+query = "What is the difference between HTTP and HTTPS?"
+
+llm = OpenAI(temperature=0)
+compressor = LLMChainExtractor.from_llm(llm)
+compression_retriever = ContextualCompressionRetriever(
+    base_compressor=compressor, base_retriever=retriever
+)
+
+compressed_docs = compression_retriever.invoke(query)
+pretty_print_docs(compressed_docs)
+```
+
+#### [Chain (Langchain Express Query Language)](https://python.langchain.com/v0.1/docs/modules/chains/)
+A way to write instructions for LangChain, a powerful AI tool.
+
+- Runnable interface: A basic building block that allows instructions to be executed.
+    Runnable is a subclass of ChainComponent and defines the interface for components that can be executed in a LangChain chain.
+
+    Key Characteristics
+    - Executable: Runnable components can be executed with input data.
+    - Chainable: Runnable components can be linked together to form a chain.
+    - Modular: Runnable components are self-contained and modular.
+
+    Types of Runnables
+    - LangChain provides several types of Runnable components:
+        - LLM (Large Language Model): Generates text based on input.
+        - Retriever: Retrieves context or knowledge from a database.
+        - Processor: Processes input data, performs computations.
+        - Passthrough: Passes input unchanged to the next component
+- `PromptTemplate` and `ChatPromptTemplate`: Two types of instructions that can be executed.
+- Supported calls: These instructions can be used in different ways:
+    - Invoke: Run the instruction once and get a single answer.
+    - Ainvoke (Async Invoke): Run the instruction in the background and get the answer later.
+    - Stream: Get multiple answers, one after another, like a continuous stream.
+    - Astream (Async Stream): Get multiple answers in the background, like a continuous stream.
+    - Batch: Run multiple instructions at once and get all answers together.
+    - Abatch (Async Batch): Run multiple instructions in the background and get all answers later.
+    - Astream_log: Get multiple answers, like a stream, but also log (record) each answer.
 
 
-<img src="./media/langchain1.png">
-<img src="./media/langchain1.1.png">
-
-[Documentation](https://js.langchain.com/v0.2/docs/concepts/#langsmith)
-
-## Langgraph
-
-<img src="./media/langgraph.png">
-
-## Data collection and preprocessing
-- Gather relevant datasets for training (e.g., text, images).
-- Preprocess data:
-  - Text: tokenization, stopword removal, stemming/lemmatization, embedding.
-  - Images: resizing, normalization.
-
-## RAG chain components
+#### RAG chain components
 
 1. Retriever: The Librarian
 Imagine a librarian who searches for relevant books (information) in a vast library (external knowledge sources). The retriever's job is to:
@@ -306,5 +400,15 @@ Think of an agent as a virtual assistant that automates tasks and enhances langu
 
 [Documentation](https://python.langchain.com/docs/tutorials/summarization/#concepts)
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ldBsvhjEREc?si=0U_BXnkMPg1cNXBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-<!-- PromptTemplate and ChatPromptTemplate implement the Runnable interface, the basic building block of the LangChain Expression Language (LCEL). This means they support invoke, ainvoke, stream, astream, batch, abatch, astream_log calls. -->
+
+<img src="./media/langchain1.png">
+<img src="./media/langchain1.1.png">
+
+[Documentation](https://js.langchain.com/v0.2/docs/concepts/#langsmith)
+
+## Langgraph
+
+<img src="./media/langgraph.png">
+
