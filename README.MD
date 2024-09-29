@@ -2,6 +2,34 @@
 
 ##### LLM VS Generative AI 
 
+##### [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
+Generic prompt blueprint:
+- Act as a XYZ Expert
+- I will give you the ABC in the next message
+- Exact thing you want (number, thoughts)
+- Use the following example
+- Words, format & specification
+
+Zero-Shot Prompting:
+Zero-shot prompting involves providing a model with a task description and asking it to perform the task without any additional training data. The model relies on its pre-trained knowledge and understanding of language to generate a response.
+
+Few-Shot Prompting:
+Few-shot prompting provides the model with a few examples (typically 2-10) of the desired output for a specific task, along with a task description. This helps the model understand the task requirements and generate better responses.
+
+```
+Input:
+Task: Write a product review.
+Examples:
+"This phone is amazing! The camera quality is superb."
+"The laptop's battery life is impressive, but the keyboard feels cheap."
+```
+
+
+[Chat GPT Prompt library](https://platform.openai.com/docs/examples)
+[Anthropic Prompt library](https://docs.anthropic.com/en/prompt-library/library)
+
+
+
 ##### What is Langchain ?
 
 ##### LLMs and Chat Models
@@ -407,6 +435,26 @@ Think of an agent as a virtual assistant that automates tasks and enhances langu
 <img src="./media/langchain1.1.png">
 
 [Documentation](https://js.langchain.com/v0.2/docs/concepts/#langsmith)
+
+#### Hybrid search
+- Combine multiple search technique
+    - Semantic search: Dence vector search -> similarity search
+        - Understands context, intent, and meaning
+        - Uses AI models (e.g., transformers)
+        - Captures nuances and relationships
+        - Good for complex queries
+    - Syntatic/Keyword search: Exact search -> sparse vector search (OHE, BWO, TFIDF etc..)
+        - Uses keywords, tags, or metadata
+        - Matches exact words or phrases
+
+Hybrid search combines the efficiency of keyword search to initially filter results with the contextual understanding of semantic search to rerank and refine those results, delivering more accurate and relevant information
+
+<img src="./media/hybrid_search.png" alt="Hybrid search">
+
+*How keyword & Semantic search merge ?*
+- Keyword & semantic search merge by using *Reciprocal Rank Fusion* .
+
+<img src="./media/reciprocal_rank_fusion.png" alt="reciprocal rank fusion">
 
 ## Langgraph
 
