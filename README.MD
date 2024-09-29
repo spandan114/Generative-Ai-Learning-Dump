@@ -2,7 +2,7 @@
 
 ##### LLM VS Generative AI 
 
-##### [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
+### [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
 Generic prompt blueprint:
 - Act as a XYZ Expert
 - I will give you the ABC in the next message
@@ -28,11 +28,17 @@ Examples:
 [Chat GPT Prompt library](https://platform.openai.com/docs/examples)
 [Anthropic Prompt library](https://docs.anthropic.com/en/prompt-library/library)
 
+### What is Langchain ?
 
+<iframe
+width="560"
+height="315"
+src="https://www.youtube.com/embed/ldBsvhjEREc"
+frameborder="0"
+allowfullscreen>
+</iframe>
 
-##### What is Langchain ?
-
-##### LLMs and Chat Models
+### LLMs and Chat Models
 
 | **Characteristics** | **Large Language Models (LLMs)** | **Chat Models** |
 | --- | --- | --- |
@@ -41,7 +47,7 @@ Examples:
 | **How they Work** | Pre-trained on large data, fine-tuned for specific tasks | Often backed by LLMs, tuned for conversational responses |
 | **Input and Output** | Perform various tasks | Take chat messages as input, return AI message as output |
 
-#### [Chat Model Messages](https://python.langchain.com/v0.1/docs/modules/model_io/chat/)
+### [Chat Model Messages](https://python.langchain.com/v0.1/docs/modules/model_io/chat/)
 - Message Structure
   - Role: Describes who is saying the message (e.g., human, AI, system)
   - Content: Describes the message content (string, list of dictionaries)
@@ -89,7 +95,7 @@ tool_msg = ToolMessage(content="Search results:", tool_call_id="search_123")
 print(tool_msg)
 ```
 
-#### [Prompt Template in LangChain](https://python.langchain.com/v0.1/docs/modules/model_io/prompts/quick_start/)
+### [Prompt Template in LangChain](https://python.langchain.com/v0.1/docs/modules/model_io/prompts/quick_start/)
 
 Prompt templates are pre-designed formats that help you ask questions or provide tasks to language models. They ensure you get accurate and relevant responses.
 
@@ -178,7 +184,7 @@ template = PromptTemplate(template="...", messages_placeholder=MessagesPlacehold
 prompt = template.format(messages=[message1, message2])
 ```
 
-##### Where to use format ,format_messages & from_template
+#### Where to use format ,format_messages & from_template
 
 1. `format()` 
  Usage: Replace placeholders in the template with specific values.
@@ -244,7 +250,7 @@ prompt = FewShotPromptTemplate(
 
 prompt.format(input="Write a humorous poem about a Toast.")
 ```
-#### [Output Parser](https://python.langchain.com/docs/concepts/#output-parsers)
+### [Output Parser](https://python.langchain.com/docs/concepts/#output-parsers)
 
 `Output parser` is responsible for taking the output of a model and transforming it to a more suitable format for downstream tasks.
 
@@ -288,7 +294,7 @@ print(response)
 - Retrievers
 - Indexing
 
-##### Contextual compression
+### Contextual compression
 While retriving data from a  vector store we get the document with with a lot of irrelevant text contextual compression helps to fix this.
 
 The idea is simple: instead of immediately returning retrieved documents as-is, you can compress them using the context of the given query, so that only the relevant information is returned. “Compressing” here refers to both compressing the contents of an individual document and filtering out documents wholesale.
@@ -329,7 +335,7 @@ compressed_docs = compression_retriever.invoke(query)
 pretty_print_docs(compressed_docs)
 ```
 
-#### [Chain (Langchain Express Query Language)](https://python.langchain.com/v0.1/docs/modules/chains/)
+### [Chain (Langchain Express Query Language)](https://python.langchain.com/v0.1/docs/modules/chains/)
 A way to write instructions for LangChain, a powerful AI tool.
 
 - Runnable interface: A basic building block that allows instructions to be executed.
@@ -357,7 +363,7 @@ A way to write instructions for LangChain, a powerful AI tool.
     - Astream_log: Get multiple answers, like a stream, but also log (record) each answer.
 
 
-#### RAG chain components
+### RAG chain components
 
 1. Retriever: The Librarian
 Imagine a librarian who searches for relevant books (information) in a vast library (external knowledge sources). The retriever's job is to:
@@ -386,7 +392,7 @@ Generator: "Here's the answer!"
 History Awareness: "Remember, we were just talking about this related topic."
 Together, these components work together to provide accurate, informative, and contextually relevant responses!
 
-## Tools & Agents
+### Tools & Agents
 Tools are interfaces that an agent, chain, or LLM can use to interact with the world.
 
 In LangChain, *tools* are pre-built components that simplify building AI-powered language applications. 
@@ -428,15 +434,12 @@ Think of an agent as a virtual assistant that automates tasks and enhances langu
 
 [Documentation](https://python.langchain.com/docs/tutorials/summarization/#concepts)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/ldBsvhjEREc?si=0U_BXnkMPg1cNXBU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-
 <img src="./media/langchain1.png">
 <img src="./media/langchain1.1.png">
 
 [Documentation](https://js.langchain.com/v0.2/docs/concepts/#langsmith)
 
-#### Hybrid search
+### Hybrid search
 - Combine multiple search technique
     - Semantic search: Dence vector search -> similarity search
         - Understands context, intent, and meaning
@@ -455,6 +458,8 @@ Hybrid search combines the efficiency of keyword search to initially filter resu
 - Keyword & semantic search merge by using *Reciprocal Rank Fusion* .
 
 <img src="./media/reciprocal_rank_fusion.png" alt="reciprocal rank fusion">
+
+### Graph Database
 
 ## Langgraph
 
