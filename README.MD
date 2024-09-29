@@ -30,13 +30,7 @@ Examples:
 
 ### What is Langchain ?
 
-<iframe
-width="560"
-height="315"
-src="https://www.youtube.com/embed/ldBsvhjEREc"
-frameborder="0"
-allowfullscreen>
-</iframe>
+[![YouTube Video](https://img.youtube.com/vi/ldBsvhjEREc/maxresdefault.jpg)](https://www.youtube.com/watch?v=ldBsvhjEREc)
 
 ### LLMs and Chat Models
 
@@ -461,7 +455,11 @@ Hybrid search combines the efficiency of keyword search to initially filter resu
 
 ### Graph Database
 
-## Langgraph
+Knowledge graph:
+
+[![YouTube Video](https://img.youtube.com/vi/y7sXDpffzQQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=y7sXDpffzQQ)
+
+### Langgraph
 
 <img src="./media/langgraph.png">
 
