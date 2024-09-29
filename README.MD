@@ -457,7 +457,62 @@ Hybrid search combines the efficiency of keyword search to initially filter resu
 
 Knowledge graph:
 
+A knowledge graph is like a massive, interactive mind map that visually represents relationships between:
+- Entities (people, places, things)
+- Concepts (ideas, events, topics)
+- Relationships (connections between entities and concepts)
+
+Here NLP  plays a crucial role in defining relationships within knowledge graphs.
+
 [![YouTube Video](https://img.youtube.com/vi/y7sXDpffzQQ/maxresdefault.jpg)](https://www.youtube.com/watch?v=y7sXDpffzQQ)
+
+Three main component:
+- Node (Object, places, Person)
+- Edges (Relationship between nodes)
+- Label (What kind of relationship)
+
+| **Database Type** | **RDBMS** | **Vector DB** | **Graph DB** |
+| --- | --- | --- | --- |
+| **Schema** | Fixed | Flexible | Flexible |
+| **Scalability** | Limited | High | High |
+| **Query Language** | SQL | Custom | Cypher/Gremlin |
+| **Relationship Handling** | Limited | Efficient | Efficient |
+| **Insertion** | Column -> Rows |  | Nodes |
+| **Constrains** | Primary,foreign,candidate key |  | Relationship |
+| **Data population** | Join query |  | traversal |
+| **Use Cases** | Transactional, structured data | Similarity search, ML | Complex relationships, networks |
+
+#### Vector Databases
+
+##### Pros
+* Efficient similarity search and nearest-neighbor queries
+* Scalability for large datasets
+* Flexible schema-less design
+* Optimized for machine learning and AI workloads
+
+##### Cons
+* Limited support for transactions and concurrency
+* Query language limitations (no SQL)
+* Requires specialized indexing and caching
+
+#### Graph Databases
+
+##### Pros
+* Efficient storage and querying of complex relationships
+* Flexible schema-less design
+* Scalability for large datasets
+* Supports advanced querying languages (Cypher, Gremlin)
+
+##### Cons
+* Steeper learning curve
+* Limited support for transactions and concurrency
+* Requires specialized indexing and caching
+
+
+**Examples:**
+* RDBMS: MySQL, PostgreSQL, Oracle, Microsoft SQL Server
+* Vector DB: Pinecone, Weaviate, Qdrant, Annoy
+* Graph DB: Neo4j, Amazon Neptune, ArangoDB, OrientDB
 
 ### Langgraph
 
