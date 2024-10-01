@@ -41,3 +41,5 @@ crewai-tools
 pinecone-client
 pinecone-text
 pinecone-notebooks
+neo4j==5.14
+langchain_experimental
