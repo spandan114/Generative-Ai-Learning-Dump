@@ -29,6 +29,8 @@ Examples:
 [Chat GPT Prompt library](https://platform.openai.com/docs/examples)
 [Anthropic Prompt library](https://docs.anthropic.com/en/prompt-library/library)
 
+[![YouTube Video](https://img.youtube.com/vi/yu27PWzJI_Y/maxresdefault.jpg)](https://www.youtube.com/watch?v=yu27PWzJI_Y)
+
 ### What is Langchain ?
 
 [![YouTube Video](https://img.youtube.com/vi/ldBsvhjEREc/maxresdefault.jpg)](https://www.youtube.com/watch?v=ldBsvhjEREc)
@@ -514,6 +516,93 @@ Three main component:
 * RDBMS: MySQL, PostgreSQL, Oracle, Microsoft SQL Server
 * Vector DB: Pinecone, Weaviate, Qdrant, Annoy
 * Graph DB: Neo4j, Amazon Neptune, ArangoDB, OrientDB
+
+#### Cypher Query Neo4j
+
+### LLM Finetuning
+##### RAG VS Finetuning
+[![YouTube Video](https://img.youtube.com/vi/00Q0G84kq3M/maxresdefault.jpg)](https://www.youtube.com/watch?v=00Q0G84kq3M)
+
+#### <u>Quantization:</u>
+
+Conversion from higher memory format to lower memory format is called Quantization
+
+Quantization reduces the precision of neural network weights and activations from floating-point numbers (e.g., float32) to lower-precision integers (e.g., int8). This compression technique decreases memory usage and computational requirements.
+
+- Memory constraints: Reduced memory footprint enables deployment on edge devices with limited resources.
+- Computational efficiency: Lower-precision operations accelerate computations on specialized hardware.
+- Energy efficiency: Quantized models consume less power.
+
+<img src="/media/quantization.png">
+
+- Because of quantization memory loss may happen as we reducing the size.
+
+###### <u>Common Data Types</u>
+1) FP16 quantization
+1) BF16 quantization
+3) INT8 quantization
+- [0,.....,1000] -> 32bit (Number)convert it to [0,....,255] -> 8bit (uint8)
+
+<img src="/media/int8.png">
+<img src="/media/minmax.png">
+
+[Medium blog: Quantization Overview](https://medium.com/@abonia/llm-series-quantization-overview-1b37c560946b)
+[maartengrootendorst blog: Quantization Overview](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization)
+
+- Symmetric Quantization
+    - symmetric quantization uses a uniform scale centered around zero
+- Asymmetric Quantization
+    - asymmetric quantization uses a non-uniform scale with an offset zero. Asymmetric quantization is more accurate for activations but harder to implement.
+
+###### <u>Calibration</u>
+- Calibration is the process of adjusting the quantization parameters to minimize the difference between the original floating-point model and the quantized model. 
+
+###### <u>Post-Training Quantization (PTQ)</u>
+
+ Reduce neural network precision from floating-point to integers after training.
+
+PTQ Workflow:
+- Training: Train the model using floating-point numbers.
+- Statistics collection: Gather activation and weight statistics.
+- Quantization: Convert model to lower-precision integers.
+
+<img src="/media/pqt.png">
+
+GGML and GPTQ are both quantized models designed to reduce model complexity and computational requirements by using lower-precision model weights
+
+| Feature          | GGML                         | GPTQ                         |
+|:----------------|:---------------------------|:---------------------------|
+| Focus           | Matrix linearization       | Product quantization       |
+| Accuracy        | Higher                      | Competitive                 |
+| Memory Reduction| Moderate                    | Higher                      |
+| Complexity      | Moderate                    | Lower                       |
+| Quantization Scheme| Linear transformation     | Product of lower-precision matrices|
+| Hardware Support | Various                    | Hardware-friendly           |
+| Application     | Edge AI, Computer Vision, NLP| Edge AI, Computer Vision, NLP|
+
+###### <u>Quantization-Aware Training (QAT)</u>
+PTQ have some problem (Loss of data & accuracy) thats why QAT introduce
+ 
+QAT is a training procedure that simulates quantization effects during training, allowing the model to adapt to quantization errors.
+
+<img src="/media/qat.png">
+
+### LoRA & QLora
+[LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/pdf/2106.09685v2)
+[QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/pdf/2106.09685v2)
+
+Full parameter fine tuning challenges:
+- Update model weights (EX: 175 Billion param)
+- Hardware resource constrain
+
+LoRA:
+- LoRA is a technique to adapt pre-trained models to new tasks or datasets by updating a small set of low-rank matrices.
+- Instead of updating weights it track changes
+
+QLoRA:
+- QLoRA combines LoRA with quantization, adapting pre-trained models while reducing precision
+
+[![YouTube Video](https://img.youtube.com/vi/t1caDsMzWBk/maxresdefault.jpg)](https://www.youtube.com/watch?v=t1caDsMzWBk)
 
 ### Langgraph
 
