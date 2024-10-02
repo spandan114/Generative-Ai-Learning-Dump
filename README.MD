@@ -537,7 +537,7 @@ Quantization reduces the precision of neural network weights and activations fro
 
 - Because of quantization memory loss may happen as we reducing the size.
 
-###### <u>Common Data Types</u>
+##### <u>Common Data Types</u>
 1) FP16 quantization
 1) BF16 quantization
 3) INT8 quantization
@@ -547,6 +547,7 @@ Quantization reduces the precision of neural network weights and activations fro
 <img src="/media/minmax.png">
 
 [Medium blog: Quantization Overview](https://medium.com/@abonia/llm-series-quantization-overview-1b37c560946b)
+
 [maartengrootendorst blog: Quantization Overview](https://newsletter.maartengrootendorst.com/p/a-visual-guide-to-quantization)
 
 - Symmetric Quantization
@@ -554,10 +555,10 @@ Quantization reduces the precision of neural network weights and activations fro
 - Asymmetric Quantization
     - asymmetric quantization uses a non-uniform scale with an offset zero. Asymmetric quantization is more accurate for activations but harder to implement.
 
-###### <u>Calibration</u>
+##### <u>Calibration</u>
 - Calibration is the process of adjusting the quantization parameters to minimize the difference between the original floating-point model and the quantized model. 
 
-###### <u>Post-Training Quantization (PTQ)</u>
+##### <u>Post-Training Quantization (PTQ)</u>
 
  Reduce neural network precision from floating-point to integers after training.
 
@@ -580,15 +581,16 @@ GGML and GPTQ are both quantized models designed to reduce model complexity and 
 | Hardware Support | Various                    | Hardware-friendly           |
 | Application     | Edge AI, Computer Vision, NLP| Edge AI, Computer Vision, NLP|
 
-###### <u>Quantization-Aware Training (QAT)</u>
+##### <u>Quantization-Aware Training (QAT)</u>
 PTQ have some problem (Loss of data & accuracy) thats why QAT introduce
  
 QAT is a training procedure that simulates quantization effects during training, allowing the model to adapt to quantization errors.
 
 <img src="/media/qat.png">
 
-### LoRA & QLora
+### LoRA & QLoRA
 [LoRA: Low-Rank Adaptation of Large Language Models](https://arxiv.org/pdf/2106.09685v2)
+
 [QLoRA: Efficient Finetuning of Quantized LLMs](https://arxiv.org/pdf/2106.09685v2)
 
 Full parameter fine tuning challenges:
