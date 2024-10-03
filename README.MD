@@ -607,6 +607,9 @@ To pick low-rank matrices, LoRA typically follows these steps:
 - Retain the top-k singular values or eigenvalues (and their corresponding singular vectors or eigenvectors).
 - Discard the remaining dimensions.
 
+<img src="/media/lora1.png">
+<img src="/media/lora2.png">
+
 QLoRA:
 - QLoRA combines LoRA with quantization, adapting pre-trained models while reducing precision
 
