@@ -601,10 +601,25 @@ LoRA:
 - LoRA is a technique to adapt pre-trained models to new tasks or datasets by updating a small set of low-rank matrices.
 - Instead of updating weights it track changes
 
+Rank Selection:
+To pick low-rank matrices, LoRA typically follows these steps:
+- Compute the SVD or eigenvalue decomposition of the weight matrix.
+- Retain the top-k singular values or eigenvalues (and their corresponding singular vectors or eigenvectors).
+- Discard the remaining dimensions.
+
 QLoRA:
 - QLoRA combines LoRA with quantization, adapting pre-trained models while reducing precision
 
 [![YouTube Video](https://img.youtube.com/vi/t1caDsMzWBk/maxresdefault.jpg)](https://www.youtube.com/watch?v=t1caDsMzWBk)
+
+Fine tunning llm steps:
+- Load and Prepare the Dataset
+-  Preprocess the Data (Tokenize the dataset using the tokenizer associated with the pre-trained model)
+- Set Up the Training Arguments (Specify the hyperparameters and training settings.)
+- Initialize the Model (Load the pre-trained model and define the training procedure.)
+- Train the Model (Fine-tune the pre-trained model on your specific dataset.)
+- Evaluate the Model (Assess the model's performance on a validation set.)
+- Save the Fine-Tuned Model & Use it
 
 ### Langgraph
 

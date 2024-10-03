@@ -1,0 +1,13 @@
+1- Pipeline
+2- NLP Tasks
+3- Tokenization
+4- Dataset
+5- Huggingface spaces
+6- Fine tunning llm
+    - Load and Prepare the Dataset
+    - Preprocess the Data (Tokenize the dataset using the tokenizer associated with the pre-trained model)
+    - Set Up the Training Arguments (Specify the hyperparameters and training settings.)
+    - Initialize the Model (Load the pre-trained model and define the training procedure.)
+    - Train the Model (Fine-tune the pre-trained model on your specific dataset.)
+    - Evaluate the Model (Assess the model's performance on a validation set.)
+    - Save the Fine-Tuned Model & Use it
