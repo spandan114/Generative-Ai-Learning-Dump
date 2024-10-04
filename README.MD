@@ -615,6 +615,8 @@ QLoRA:
 
 [![YouTube Video](https://img.youtube.com/vi/t1caDsMzWBk/maxresdefault.jpg)](https://www.youtube.com/watch?v=t1caDsMzWBk)
 
+[![YouTube Video](https://img.youtube.com/vi/dA-NhCtrrVE/maxresdefault.jpg)](https://www.youtube.com/watch?v=dA-NhCtrrVE)
+
 Fine tunning llm steps:
 - Load and Prepare the Dataset
 -  Preprocess the Data (Tokenize the dataset using the tokenizer associated with the pre-trained model)
@@ -625,6 +627,16 @@ Fine tunning llm steps:
 - Save the Fine-Tuned Model & Use it
 
 ### Langgraph
+
+A tool for building stateful, multi-actor applications with LLM.
+
+Core benefits:
+- State management & agent coordination
+- Cycles: Supports cyclic workflows, essential for agentic architectures.
+- Controllability: Fine-grained control over application flow and state.
+- Persistence: Built-in persistence for human-in-the-loop and memory features
+- Fault tolerance
+
 
 <img src="./media/langgraph.png">
 
