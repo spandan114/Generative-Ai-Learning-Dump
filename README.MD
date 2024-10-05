@@ -1,8 +1,21 @@
-##### What is LLM ?
+## What is LLM ?
+Imagine LLMs as super-smart text tools that have read massive amounts of text (like books, websites, and articles) and learned how to predict words and understand language patterns. These models can perform a wide variety of tasks, such as answering questions, writing essays, translating languages, and even holding conversations.
 
-##### LLM VS Generative AI 
+## LLM VS Generative AI 
 
-### [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
+| **Feature**               | **LLM (Large Language Model)**                           | **Generative AI**                              |
+|---------------------------|---------------------------------------------------------|------------------------------------------------|
+| **Definition**             | A type of AI model focused on understanding and generating human language. | A broad category of AI that creates new content like text, images, music, and more. |
+| **Scope**                  | Specifically designed for language-related tasks.        | Encompasses content generation across various media (text, images, sound, video).   |
+| **Focus**                  | Text generation (e.g., conversations, coding, summaries).| Can generate text, images, videos, music, etc.  |
+| **Training Data**          | Trained on massive datasets of text (e.g., books, articles, websites). | Trained on various types of data depending on the task (text, images, audio, etc.). |
+| **Examples**               | ChatGPT, Google’s BERT, OpenAI Codex                     | DALL·E (image generation), MuseNet (music creation), deepfakes (video generation).   |
+| **Content Type**           | Generates and understands text-based content.            | Generates different types of content such as text, images, music, and video.         |
+| **Use Cases**              | Writing, summarizing, answering questions, language translation, coding. | Creating artwork, composing music, generating videos, designing virtual worlds.      |
+| **Relation**               | A subset of Generative AI specialized in language.       | A broader category that includes LLMs as one component.                             |
+
+
+## [Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering)
 Generic prompt blueprint:
 - Act as a XYZ Expert
 - I will give you the ABC in the next message
@@ -31,7 +44,7 @@ Examples:
 
 [![YouTube Video](https://img.youtube.com/vi/yu27PWzJI_Y/maxresdefault.jpg)](https://www.youtube.com/watch?v=yu27PWzJI_Y)
 
-### What is Langchain ?
+## What is Langchain ?
 
 [![YouTube Video](https://img.youtube.com/vi/ldBsvhjEREc/maxresdefault.jpg)](https://www.youtube.com/watch?v=ldBsvhjEREc)
 
@@ -181,7 +194,7 @@ template = PromptTemplate(template="...", messages_placeholder=MessagesPlacehold
 prompt = template.format(messages=[message1, message2])
 ```
 
-#### Where to use format ,format_messages & from_template
+### Where to use format ,format_messages & from_template
 
 1. `format()` 
  Usage: Replace placeholders in the template with specific values.
@@ -217,7 +230,7 @@ new_template = AIMessagePromptTemplate.from_template(
 )
 ```
 
-#### [Few-shot prompt](https://python.langchain.com/v0.1/docs/modules/model_io/prompts/few_shot_examples/)
+### [Few-shot prompt](https://python.langchain.com/v0.1/docs/modules/model_io/prompts/few_shot_examples/)
 A few-shot prompt is a type of prompt that provides a limited number of examples (typically 2-5) of the desired output, along with a clear instruction or task. This approach enables language models to understand the context and generate high-quality responses.
 ```
 **Task:** Write a short story about a character who discovers a hidden world.
@@ -281,7 +294,7 @@ response = chain.invoke({
 print(response)
 ```
 
-#### [Data ingestion (Retrieval)](https://python.langchain.com/v0.1/docs/modules/data_connection/)
+## [Data ingestion (Retrieval)](https://python.langchain.com/v0.1/docs/modules/data_connection/)
 <img src="./media/retrieval.jpg">
 
 - Loader
@@ -332,7 +345,7 @@ compressed_docs = compression_retriever.invoke(query)
 pretty_print_docs(compressed_docs)
 ```
 
-### [Chain (Langchain Express Query Language)](https://python.langchain.com/v0.1/docs/modules/chains/)
+## [Chain (Langchain Express Query Language)](https://python.langchain.com/v0.1/docs/modules/chains/)
 A way to write instructions for LangChain, a powerful AI tool.
 
 - Runnable interface: A basic building block that allows instructions to be executed.
@@ -360,7 +373,7 @@ A way to write instructions for LangChain, a powerful AI tool.
     - Astream_log: Get multiple answers, like a stream, but also log (record) each answer.
 
 
-### RAG chain components
+## RAG chain components
 
 1. Retriever: The Librarian
 Imagine a librarian who searches for relevant books (information) in a vast library (external knowledge sources). The retriever's job is to:
@@ -389,7 +402,7 @@ Generator: "Here's the answer!"
 History Awareness: "Remember, we were just talking about this related topic."
 Together, these components work together to provide accurate, informative, and contextually relevant responses!
 
-### Tools & Agents
+## Tools & Agents
 Tools are interfaces that an agent, chain, or LLM can use to interact with the world.
 
 In LangChain, *tools* are pre-built components that simplify building AI-powered language applications. 
@@ -416,7 +429,7 @@ Types of agents:
 
 Think of an agent as a virtual assistant that automates tasks and enhances language model capabilities.
 
-### Text summarization
+## Text summarization
 - If content fits in llm context window we can pass it directly to llm.
 - If content doesn't fits in llm context window we can apply these two common approaches for this are:
 
@@ -436,7 +449,7 @@ Think of an agent as a virtual assistant that automates tasks and enhances langu
 
 [Documentation](https://js.langchain.com/v0.2/docs/concepts/#langsmith)
 
-### Hybrid search
+## Hybrid search
 - Combine multiple search technique
     - Semantic search: Dence vector search -> similarity search
         - Understands context, intent, and meaning
@@ -456,7 +469,7 @@ Hybrid search combines the efficiency of keyword search to initially filter resu
 
 <img src="./media/reciprocal_rank_fusion.png" alt="reciprocal rank fusion">
 
-### Graph Database
+## Graph Database
 
 Knowledge graph:
 
@@ -517,13 +530,13 @@ Three main component:
 * Vector DB: Pinecone, Weaviate, Qdrant, Annoy
 * Graph DB: Neo4j, Amazon Neptune, ArangoDB, OrientDB
 
-#### Cypher Query Neo4j
+### Cypher Query Neo4j
 
-### LLM Finetuning
-##### RAG VS Finetuning
+## LLM Finetuning
+### RAG VS Finetuning
 [![YouTube Video](https://img.youtube.com/vi/00Q0G84kq3M/maxresdefault.jpg)](https://www.youtube.com/watch?v=00Q0G84kq3M)
 
-#### <u>Quantization:</u>
+### <u>Quantization:</u>
 
 Conversion from higher memory format to lower memory format is called Quantization
 
@@ -537,7 +550,7 @@ Quantization reduces the precision of neural network weights and activations fro
 
 - Because of quantization memory loss may happen as we reducing the size.
 
-##### <u>Common Data Types</u>
+### <u>Common Data Types</u>
 1) FP16 quantization
 1) BF16 quantization
 3) INT8 quantization
@@ -555,10 +568,10 @@ Quantization reduces the precision of neural network weights and activations fro
 - Asymmetric Quantization
     - asymmetric quantization uses a non-uniform scale with an offset zero. Asymmetric quantization is more accurate for activations but harder to implement.
 
-##### <u>Calibration</u>
+### <u>Calibration</u>
 - Calibration is the process of adjusting the quantization parameters to minimize the difference between the original floating-point model and the quantized model. 
 
-##### <u>Post-Training Quantization (PTQ)</u>
+### <u>Post-Training Quantization (PTQ)</u>
 
  Reduce neural network precision from floating-point to integers after training.
 
@@ -581,7 +594,7 @@ GGML and GPTQ are both quantized models designed to reduce model complexity and 
 | Hardware Support | Various                    | Hardware-friendly           |
 | Application     | Edge AI, Computer Vision, NLP| Edge AI, Computer Vision, NLP|
 
-##### <u>Quantization-Aware Training (QAT)</u>
+### <u>Quantization-Aware Training (QAT)</u>
 PTQ have some problem (Loss of data & accuracy) thats why QAT introduce
  
 QAT is a training procedure that simulates quantization effects during training, allowing the model to adapt to quantization errors.
