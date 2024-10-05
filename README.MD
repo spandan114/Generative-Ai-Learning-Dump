@@ -37,7 +37,7 @@ Examples:
 "The laptop's battery life is impressive, but the keyboard feels cheap."
 ```
 
-<img src="./media/prompt-blueprint.png" alt="Prompt blueprint">
+<img src="https://cdn-infographic.pressidium.com/wp-content/uploads/2024/01/Chat-GPT-Prompt-Frameworks.jpg" alt="Prompt blueprint">
 
 [Chat GPT Prompt library](https://platform.openai.com/docs/examples)
 [Anthropic Prompt library](https://docs.anthropic.com/en/prompt-library/library)
