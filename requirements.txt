@@ -37,7 +37,6 @@ cassio
 boto3
 awscli
 crewai
-crewai-tools
 pinecone-client
 pinecone-text
 pinecone-notebooks
